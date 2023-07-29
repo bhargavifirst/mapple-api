@@ -6,7 +6,7 @@ Library    DateTime
 Library    XML
 
 Library  OperatingSystem
-***** Variables ***
+***** Variables ****
 
 ${base_url}  https://qapiv1.maplerecord.com/api
 **** Test Cases ***
