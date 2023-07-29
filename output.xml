@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.0.2 (Python 3.11.3 on win32)" generated="20230726 15:20:10.016" rpa="false" schemaversion="3">
+<suite id="s1" name="Testcase" source="C:\Users\SAHITI AASHVI\PycharmProjects\pythonProject3\Testcases1\testcase.robot">
+<test id="s1-t1" name="post_request" line="13">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>mysession</arg>
+<arg>${base_url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20230726 15:20:10.111" level="INFO">Creating Session using : alias=mysession, url=https://qapiv1.maplerecord.com/api, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20230726 15:20:10.111" endtime="20230726 15:20:10.111"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${body}</var>
+<arg>subjectName=sahiti22</arg>
+<arg>functionId=1</arg>
+<arg>format=letters</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230726 15:20:10.111" level="INFO">${body} = {'subjectName': 'sahiti22', 'functionId': '1', 'format': 'letters'}</msg>
+<status status="PASS" starttime="20230726 15:20:10.111" endtime="20230726 15:20:10.111"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${header}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230726 15:20:10.111" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20230726 15:20:10.111" endtime="20230726 15:20:10.111"/>
+</kw>
+<kw name="Post Request" library="RequestsLibrary">
+<var>${response}</var>
+<arg>mysession</arg>
+<arg>/subjects/add</arg>
+<arg>data=${body}</arg>
+<arg>headers=${header}</arg>
+<doc>*DEPRECATED* Please use `POST On Session` instead.</doc>
+<msg timestamp="20230726 15:20:10.111" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+<msg timestamp="20230726 15:20:11.684" level="INFO">POST Request : url=https://qapiv1.maplerecord.com/api/subjects/add 
+ path_url=/api/subjects/add 
+ headers={'User-Agent': 'python-requests/2.29.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '67'} 
+ body={"subjectName": "sahiti22", "functionId": "1", "format": "letters"} 
+ </msg>
+<msg timestamp="20230726 15:20:11.684" level="INFO">POST Response : url=https://qapiv1.maplerecord.com/api/subjects/add 
+ status=200, reason=OK 
+ headers={'Transfer-Encoding': 'chunked', 'Content-Type': 'application/json; charset=utf-8', 'Server': 'Microsoft-IIS/10.0', 'X-Powered-By': 'ASP.NET', 'Date': 'Wed, 26 Jul 2023 09:50:10 GMT'} 
+ body={"isSuccess":true,"message":"Subject added successfully","errors":null,"errorMessages":null,"data":11} 
+ </msg>
+<msg timestamp="20230726 15:20:11.684" level="INFO">C:\Users\SAHITI AASHVI\PycharmProjects\pythonProject3\APRIL-2023\Lib\site-packages\urllib3\connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'qapiv1.maplerecord.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20230726 15:20:11.684" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230726 15:20:10.111" endtime="20230726 15:20:11.684"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230726 15:20:11.684" endtime="20230726 15:20:11.684"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230726 15:20:11.684" endtime="20230726 15:20:11.697"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${status_code}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230726 15:20:11.697" level="INFO">${status_code} = 200</msg>
+<status status="PASS" starttime="20230726 15:20:11.697" endtime="20230726 15:20:11.697"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${status_code}</arg>
+<arg>200</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20230726 15:20:11.697" endtime="20230726 15:20:11.697"/>
+</kw>
+<status status="PASS" starttime="20230726 15:20:10.111" endtime="20230726 15:20:11.697"/>
+</test>
+<status status="PASS" starttime="20230726 15:20:10.016" endtime="20230726 15:20:11.697"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Testcase">Testcase</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20230726 15:20:10.111" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+</errors>
+</robot>
